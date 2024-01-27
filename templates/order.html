@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Now</title>
+
+    <style>
+        /* Increase the size of the form container */
+        .form-container {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f7f7f7;
+        }
+
+        /* Style form labels and inputs */
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input,
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* Default styles for the input field */
+
+
+        /* Styles for the input field when it's in focus */
+        input:focus {
+            border-color: #224BCF; /* Change the border color to blue on focus */
+        }
+
+        /* Style the submit button */
+        form input[type="submit"] {
+            background-color: #16a083; /* Change the submit button color to #16a083 */
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Center the submit button */
+        form input[type="submit"] {
+            display: block;
+            margin: 0 auto;
+        }
+        .btn-primary:hover {
+            background: #117964;
+            transition: background 0.3s ease-in-out;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="form-container">
+    <h2>Order Now</h2>
+    <form action="/order" method="POST">
+        <label for="itemname">Itemname:</label>
+        <input type="text" id="itemname" name="itemname" required><br><br>
+        <label for="quantity" id="quantityLabel">Quantity:</label>
+        <input type="text" id="quantity" name="quantity" required><br><br>
+        {{ error }}
+        <br>
+        <input type="submit" value="Submit" class = "btn-primary">
+    </form>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add or Update Restaurant</title>
+</head>
+<body>
+<nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" name="" id="">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/Allrestaurant">Restaurants</a></li>
+                <li><a href="/dietform">Food Preference</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+            <h1 class="logo">Food Express</h1>
+        </div>
+    </nav>
+<h1>Add Menus Items</h1>
+<form action="/updateMenue" method="POST">
+    <label>Restaurant Name:</label>
+    <input type="text" name="rname"/><br>
+    <label>Action:</label>
+    <select id="action" name="action" required>
+        <option value="Add">Add Menu Items</option>
+        <option value="Update">Update Menu Items</option>
+    </select><br>
+    <label>No of Items:</label>
+    <input type="number" name="no" id="item-count" min="1" max="10" onchange="createItemInputs()"/><br>
+    <div id="item-inputs-container">
+        <!-- Item inputs will be dynamically added here -->
+    </div>
+    <label>Speciality</label>
+    <input type="text" name="spec"/><br>
+    <label>Contact</label>
+    <input type="text" name="contact"/><br>
+    <input type="submit" value="Update Restaurant">
+</form>
+<h2>{{ error }}</h2>
+
+<script>
+    function createItemInputs() {
+        const itemCount = parseInt(document.getElementById('item-count').value);
+        const container = document.getElementById('item-inputs-container');
+        container.innerHTML = ''; // Clear previous inputs
+
+        for (let i = 1; i <= itemCount; i++) {
+            const labelItemName = document.createElement('label');
+            labelItemName.textContent = `Item ${i}:`;
+            const inputItemName = document.createElement('input');
+            inputItemName.type = 'text';
+            inputItemName.name = `item_name_${i}`;
+            inputItemName.placeholder = 'Enter Item Name';
+
+            const labelPrice = document.createElement('label');
+            labelPrice.textContent = 'Price:';
+            const inputPrice = document.createElement('input');
+            inputPrice.type = 'number';
+            inputPrice.name = `price_${i}`;
+            inputPrice.min = '0';
+            inputPrice.step = '0.01';
+            inputPrice.placeholder = 'Enter Price';
+
+            const labelQuantity = document.createElement('label');
+            labelQuantity.textContent = 'Quantity:';
+            const inputQuantity = document.createElement('input');
+            inputQuantity.type = 'number';
+            inputQuantity.name = `quantity_${i}`;
+            inputQuantity.min = '1';
+            inputQuantity.placeholder = 'Enter Quantity In Hand';
+
+            const lineBreak = document.createElement('br');
+
+            container.appendChild(labelItemName);
+            container.appendChild(inputItemName);
+            container.appendChild(labelPrice);
+            container.appendChild(inputPrice);
+            container.appendChild(labelQuantity);
+            container.appendChild(inputQuantity);
+            container.appendChild(lineBreak);
+        }
+    }
+
+    // Call createItemInputs on page load to initialize the item inputs based on the initial value.
+    createItemInputs();
+</script>
+<footer id="footer">
+        <h2>Restraunt &copy; all rights reserved</h2>
+</footer>
+</body>
+</html>

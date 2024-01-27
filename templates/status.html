@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" name="" id="">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/Allrestaurant">Restaurants</a></li>
+                <li><a href="/dietform">Food Preference</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+            <h1 class="logo">Food Express</h1>
+        </div>
+    </nav>
+<br><br>
+<a href="/logout">Logout</a><br><br>
+<h1>Your order to deliver is </h1>
+{% for i in data %}
+    <table border="1" id ="show" style="...">
+        <tr>
+            <td colspan="3"> Name: {{ i["name"] }}</td>
+        </tr>
+        <tr>
+            <td colspan="3"> Address:{{ i["address"] }}</td>
+        </tr>
+        <tr>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        {% for j in i["items"] %}
+            <tr>
+                <td>{{ j["itemName"] }}</td>
+                <td>{{ j["quantity"] }}</td>
+                <td>{{ j["price"] }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>Total Price :</td>
+            <td colspan="2">{{ i["totalPrice"] }}</td>
+        </tr>
+    </table><br>
+{% endfor %}
+<script>
+     $('#show').DataTable();
+</script>
+<footer id="footer">
+        <h2>Restraunt &copy; all rights reserved</h2>
+</footer>
+</body>
+</html>
